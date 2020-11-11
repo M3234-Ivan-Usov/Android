@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/DarkBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/weather"
+            style="@style/DarkButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:height="60dp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/picture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/halftone_rain"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/weather" />
+
+        <TextView
+            android:id="@+id/temp"
+            style="@style/DarkValues"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/temp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/picture" />
+
+        <TextView
+            android:id="@+id/location"
+            style="@style/DarkDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/location"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/temp" />
+
+        <TextView
+            android:id="@+id/date"
+            style="@style/DarkDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/location" />
+
+        <TableLayout
+            android:id="@+id/details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="5dp"
+            android:stretchColumns="*"
+            app:layout_constraintTop_toBottomOf="@id/date">
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/windVal"
+                    style="@style/DarkValues"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/wind" />
+
+                <TextView
+                    android:id="@+id/pressureVal"
+                    style="@style/DarkValues"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/press" />
+
+                <TextView
+                    android:id="@+id/humidityVal"
+                    style="@style/DarkValues"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/humidity" />
+            </TableRow>
+
+            <TableRow>
+
+                <ImageView
+                    android:id="@+id/windflow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/wind" />
+
+                <ImageView
+                    android:id="@+id/pressurePicture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/pressure" />
+
+                <ImageView
+                    android:id="@+id/humidityPicture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/humidity" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/windflowText"
+                    style="@style/DarkDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WindFlow" />
+
+                <TextView
+                    android:id="@+id/pressureText"
+                    style="@style/DarkDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pressure" />
+
+                <TextView
+                    android:id="@+id/humidityText"
+                    style="@style/DarkDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Humidity" />
+            </TableRow>
+        </TableLayout>
+
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/details">
+
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:stretchColumns="*">
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_marginHorizontal="10dp"
+                        android:id="@+id/day1temp"
+                        style="@style/DarkValues"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/temp1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/day2temp"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/day2temp"
+                        android:layout_marginHorizontal="10dp"
+                        style="@style/DarkValues"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/temp2"
+                        app:layout_constraintLeft_toRightOf="@id/day1temp"
+                        app:layout_constraintRight_toLeftOf="@id/day3temp"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_marginHorizontal="10dp"
+                        android:id="@+id/day3temp"
+                        style="@style/DarkValues"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/temp3"
+                        app:layout_constraintLeft_toRightOf="@id/day2temp"
+                        app:layout_constraintRight_toLeftOf="@id/day4temp"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_marginHorizontal="10dp"
+                        android:id="@+id/day4temp"
+                        style="@style/DarkValues"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/temp4"
+                        app:layout_constraintLeft_toRightOf="@id/day3temp"
+                        app:layout_constraintRight_toLeftOf="@id/day5temp"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_marginHorizontal="10dp"
+                        android:id="@+id/day5temp"
+                        style="@style/DarkValues"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/temp5"
+                        app:layout_constraintLeft_toRightOf="@id/day4temp"
+                        app:layout_constraintRight_toLeftOf="@id/day6temp"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_marginHorizontal="10dp"
+                        android:id="@+id/day6temp"
+                        style="@style/DarkValues"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/temp6"
+                        app:layout_constraintLeft_toRightOf="@id/day5temp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </TableRow>
+
+                <TableRow>
+
+                    <ImageView
+                        android:layout_marginHorizontal="10dp"
+                        android:id="@+id/day1picture"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/small_halftone"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/day2picture"
+                        app:layout_constraintTop_toBottomOf="@id/day1temp" />
+
+                    <ImageView
+                        android:layout_marginHorizontal="10dp"
+                        android:id="@+id/day2picture"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/small_sun"
+                        app:layout_constraintLeft_toRightOf="@id/day1picture"
+                        app:layout_constraintRight_toLeftOf="@id/day3picture"
+                        app:layout_constraintTop_toBottomOf="@id/day2temp" />
+
+                    <ImageView
+                        android:layout_marginHorizontal="10dp"
+                        android:id="@+id/day3picture"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/small_halftone"
+                        app:layout_constraintLeft_toRightOf="@id/day2picture"
+                        app:layout_constraintRight_toLeftOf="@id/day4picture"
+                        app:layout_constraintTop_toBottomOf="@id/day3temp" />
+
+                    <ImageView
+                        android:layout_marginHorizontal="10dp"
+                        android:id="@+id/day4picture"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/small_rain"
+                        app:layout_constraintLeft_toRightOf="@id/day3picture"
+                        app:layout_constraintRight_toLeftOf="@id/day5picture"
+                        app:layout_constraintTop_toBottomOf="@id/day4temp" />
+
+                    <ImageView
+                        android:layout_marginHorizontal="10dp"
+                        android:id="@+id/day5picture"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/small_sun"
+                        app:layout_constraintLeft_toRightOf="@id/day4picture"
+                        app:layout_constraintRight_toLeftOf="@id/day6picture"
+                        app:layout_constraintTop_toBottomOf="@id/day5temp" />
+
+                    <ImageView
+                        android:layout_marginHorizontal="10dp"
+                        android:id="@+id/day6picture"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/small_rain"
+                        app:layout_constraintLeft_toRightOf="@id/day5picture"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/day6temp" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_marginHorizontal="10dp"
+                        android:id="@+id/day1"
+                        style="@style/DarkDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/day2"
+                        app:layout_constraintTop_toBottomOf="@id/day1picture" />
+
+
+                    <TextView
+                        android:layout_marginHorizontal="10dp"
+                        android:id="@+id/day2"
+                        style="@style/DarkDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        app:layout_constraintLeft_toRightOf="@id/day1"
+                        app:layout_constraintRight_toLeftOf="@id/day3"
+                        app:layout_constraintTop_toBottomOf="@id/day2picture" />
+
+
+                    <TextView
+                        android:layout_marginHorizontal="10dp"
+                        android:id="@+id/day3"
+                        style="@style/DarkDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        app:layout_constraintLeft_toRightOf="@id/day2"
+                        app:layout_constraintRight_toLeftOf="@id/day4"
+                        app:layout_constraintTop_toBottomOf="@id/day3picture" />
+
+
+                    <TextView
+                        android:layout_marginHorizontal="10dp"
+                        android:id="@+id/day4"
+                        style="@style/DarkDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        app:layout_constraintLeft_toRightOf="@id/day3"
+                        app:layout_constraintRight_toLeftOf="@id/day5"
+                        app:layout_constraintTop_toBottomOf="@id/day4picture" />
+
+
+                    <TextView
+                        android:layout_marginHorizontal="10dp"
+                        android:id="@+id/day5"
+                        style="@style/DarkDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        app:layout_constraintLeft_toRightOf="@id/day4"
+                        app:layout_constraintRight_toLeftOf="@id/day6"
+                        app:layout_constraintTop_toBottomOf="@id/day5picture" />
+
+
+                    <TextView
+                        android:layout_marginHorizontal="10dp"
+                        android:id="@+id/day6"
+                        style="@style/DarkDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        app:layout_constraintLeft_toRightOf="@id/day5"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/day6picture" />
+                </TableRow>
+
+            </TableLayout>
+        </HorizontalScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

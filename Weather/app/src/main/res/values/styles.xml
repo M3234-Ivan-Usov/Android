@@ -1,0 +1,54 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="DarkBackground" parent="Theme.AppCompat">
+        <item name="android:background">#1C1C24</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <style name="DarkDetails" parent="DarkBackground">
+        <item name="android:textColor">#CCCCFF</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+    <style name="DarkValues" parent="DarkBackground">
+        <item name="android:textSize">30dp</item>
+        <item name="android:textColor">#FF7F00</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+    <style name="DarkButton" parent="DarkBackground">
+        <item name="android:text">Weather</item>
+        <item name="android:textColor">#CCCCFF</item>
+        <item name="android:textSize">40dp</item>
+    </style>
+
+
+    <style name="LightBackground" parent="Theme.AppCompat">
+        <item name="android:background">#CCCCFF</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <style name="LightDetails" parent="LightBackground">
+        <item name="android:textColor">#1C1C24</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+    <style name="LightValues" parent="LightBackground">
+        <item name="android:textSize">30dp</item>
+        <item name="android:textColor">#27408B</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+    <style name="LightButton" parent="LightBackground">
+        <item name="android:text">Weather</item>
+        <item name="android:textColor">#1C1C24</item>
+        <item name="android:textSize">40dp</item>
+    </style>
+
+
+</resources>

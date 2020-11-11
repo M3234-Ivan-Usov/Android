@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/storage"
+    app:startDestination="@id/storageFragment">
+
+    <fragment
+        android:id="@+id/storageFragment"
+        android:name="app.com.animation.storage.StorageFragment"
+        tools:layout="@layout/storage_layout"/>
+</navigation>

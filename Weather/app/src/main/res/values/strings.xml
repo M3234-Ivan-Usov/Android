@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Weather</string>
+
+    <string name="temp1">21.5 C</string>
+    <string name="temp2">19.1 C</string>
+    <string name="temp3">20.3 C</string>
+    <string name="temp4">21.1 C</string>
+    <string name="temp5">18.9 C</string>
+    <string name="temp6">19.2 C</string>
+
+    <string name="temp">23.5 C</string>
+    <string name="wind">2.8 m/s</string>
+    <string name="press">765 mm</string>
+    <string name="humidity">72 %</string>
+    <string name="location">Saint-Petersburg</string>
+
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+
+</resources>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/audio_player_container"
+    android:background="@color/brightWhite"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/audio_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/audio_progress"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:gravity="center"
+        android:padding="15dp"
+        android:textSize="20sp"
+        android:textColor="@color/darkGrey"/>
+    <SeekBar
+        android:id="@+id/audio_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="250sp"
+        android:maxWidth="250sp"
+        app:layout_constraintVertical_bias="0.4"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+    <TextView
+        android:id="@+id/audio_current"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/darkGrey"
+        android:layout_marginRight="3dp"
+        app:layout_constraintTop_toBottomOf="@id/audio_progress"
+        app:layout_constraintRight_toLeftOf="@id/audio_prevButton" />
+    <TextView
+        android:id="@+id/audio_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/darkGrey"
+        android:layout_marginLeft="3dp"
+        app:layout_constraintTop_toBottomOf="@id/audio_progress"
+        app:layout_constraintLeft_toRightOf="@id/audio_nextButton"/>
+
+    <Button
+        android:id="@+id/audio_playButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/audio_nextButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="PLAY"/>
+
+    <Button
+        android:id="@+id/audio_stopButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/audio_playButton"
+        app:layout_constraintTop_toBottomOf="@id/audio_nextButton"
+        android:text="STOP" />
+    <Button
+        android:id="@+id/audio_pauseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/audio_prevButton"
+        app:layout_constraintRight_toLeftOf="@id/audio_playButton"
+        android:text="PAUSE"/>
+    <Button
+        android:id="@+id/audio_nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NEXT"
+        android:layout_marginTop="17dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/audio_progress"
+        app:layout_constraintLeft_toRightOf="@id/audio_prevButton" />
+    <Button
+        android:id="@+id/audio_prevButton"
+        android:text="PREV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/audio_progress"
+        app:layout_constraintRight_toLeftOf="@id/audio_nextButton" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

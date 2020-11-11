@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/git"
+    app:startDestination="@id/url_enter">
+    <fragment
+        android:id="@+id/url_enter"
+        android:name="app.com.animation.git.UrlFragment"
+        android:label="UrlFragment"
+        tools:layout="@layout/url_layout">
+        <action
+            android:id="@+id/action_url_to_connection"
+            app:destination="@id/connection" />
+    </fragment>
+    <fragment
+        android:id="@+id/connection"
+        android:name="app.com.animation.git.ConnectionFragment"
+        android:label="Connection"
+        tools:layout="@layout/connection_layout">
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
+</navigation>

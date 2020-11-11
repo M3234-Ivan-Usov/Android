@@ -1,0 +1,16 @@
+
+<resources>
+    <string name="app_name">Navigation</string>
+    <string name="about">About</string>
+    <string name="about_description">This sample showcases navigation using a Bottom Navigation
+    View. The state and back stack of the three different screens are persisted.
+    </string>
+    <string name="error">Failed to read external storage</string>
+    <string name="title_about">About</string>
+    <string name="title_home">Home</string>
+    <string name="title_audiolist">Audio</string>
+    <string name="title_audioplayer">Player</string>
+    <string name="title_imagelist">Images</string>
+    <string name="title_imagefull">View</string>
+    <string name="cd_home">Home</string>
+</resources>

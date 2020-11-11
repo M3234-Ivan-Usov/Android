@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/git"
+        android:icon="@drawable/ic_git"
+        android:title="Git" />
+    <item
+        android:id="@+id/code_viewer"
+        android:icon="@drawable/ic_code_viewer"
+        android:title="Viewer" />
+    <item
+        android:id="@+id/storage"
+        android:icon="@drawable/ic_storage"
+        android:title="Storage" />
+</menu>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Animation</string>
+    <string name="error">Permission to use Internet failed</string>
+    <string name="delete_message">Do you really want to delete this file?</string>
+</resources>

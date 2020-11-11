@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="dark_background">#202020</color>
+    <color name="white_background">#FDFDFD</color>
+    <color name="line_num">#EEEEEE</color>
+    <color name="cpp_user_type">#4ec9b0</color>
+    <color name="cpp_typename">#50FFA1</color>
+    <color name="cpp_key_word">#569cd6</color>
+    <color name="cpp_primitive">#569cd6</color>
+    <color name="cpp_modifier">#569cd6</color>
+    <color name="cpp_default">#dadada</color>
+    <color name="cpp_managing">#d8a0df</color>
+    <color name="cpp_constant">#569cd6</color>
+    <color name="cpp_preprocessor">#606060</color>
+    <color name="cpp_macros">#D050F5</color>
+    <color name="cpp_string">#FFA070</color>
+    <color name="cpp_number">#FFEFC0</color>
+    <color name="git_file">#d15a49</color>
+    <color name="local_file">#4b7abb</color>
+
+</resources>
