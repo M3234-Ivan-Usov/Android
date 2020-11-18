@@ -10,8 +10,7 @@ import java.io.InputStreamReader
 import java.net.URL
 import javax.net.ssl.HttpsURLConnection
 
-class AsyncDownload(private val fragment : ConnectionFragment,
-                    private val openViewer : () -> Unit) : AsyncTask<Int, Int, Boolean>() {
+class AsyncDownload(private val fragment : ConnectionFragment) : AsyncTask<Int, Int, Boolean>() {
     private var content = ConnectionFragment.EXCEPTED
 
     private fun correctHttp(http : String) : URL {
@@ -50,13 +49,10 @@ class AsyncDownload(private val fragment : ConnectionFragment,
     override fun onPostExecute(result: Boolean?) {
         super.onPostExecute(result)
         if (content == ConnectionFragment.CANCELLED || content == ConnectionFragment.EXCEPTED) {
-            with (fragment.status) {
-                text = "Fail"
-                setTextColor(resources.getColor(R.color.git_file))
-            }
+            fragment.status = -1
+            fragment.updateStatus()
         }
         else {
-            fragment.status.text = "Parsing"
             val parser = CppParser(content, fragment.resources,
                 fragment.http.substringAfterLast('/'), true)
             parser.parse()
@@ -64,9 +60,9 @@ class AsyncDownload(private val fragment : ConnectionFragment,
                 openSources.add(parser)
                 current = openSources.size - 1
             }
-            fragment.done = true
-            fragment.getStatus()
-            openViewer()
+            fragment.status = 1
+            fragment.updateStatus()
+            (fragment.activity as MainActivity).openViewer()
         }
     }
 

@@ -38,7 +38,6 @@ class UrlFragment : Fragment() {
             }
         }
         link = view.findViewById(R.id.link)
-        link.setTextIsSelectable(true)
         return view
     }
 

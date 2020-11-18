@@ -2,4 +2,15 @@
     <string name="app_name">Animation</string>
     <string name="error">Permission to use Internet failed</string>
     <string name="delete_message">Do you really want to delete this file?</string>
+    <string name="loading">Loading...</string>
+    <string name="done">Done</string>
+    <string name="fail">Fail</string>
+    <string name="retry">Retry</string>
+    <string name="connecting_to">Connecting to</string>
+    <string name="empty_link">Put a hyperlink here</string>
+    <string name="surf">Surf</string>
+    <string name="clear">Clear</string>
+    <string name="default_link">https://github.com/M3234-Ivan-Usov/Graphics/blob/master/Scaling.cpp</string>
+    <string name="empty_viewer">Nothing to show\nOpen a .cpp file from storage\nOr download source from github</string>
+    <string name="empty_numeration">1\n2\n3</string>
 </resources>

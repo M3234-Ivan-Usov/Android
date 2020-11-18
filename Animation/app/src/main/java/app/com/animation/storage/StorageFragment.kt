@@ -20,7 +20,7 @@ class StorageFragment : Fragment() {
             findViewById<RecyclerView>(R.id.file_recycler).adapter =
                 FilesAdapter(activity as MainActivity)
             findViewById<TextView>(R.id.home_dir).text =
-                "Home: ${(activity as MainActivity).folder.absolutePath}"
+                (activity as MainActivity).folder.absolutePath
         }
     }
 

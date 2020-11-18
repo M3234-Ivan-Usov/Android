@@ -19,10 +19,6 @@ class CodeViewFragment : Fragment() {
     companion object {
         val openSources = LinkedList<CppParser>()
         var current = -1
-        const val NO_OPENED = "Nothing to show\n" +
-                "Open a .cpp file from storage storage\n" +
-                "Or download source from github"
-        const val DEFAULT_NUM = "1\n2\n3"
     }
 
     private lateinit var tabs: TabLayout
@@ -103,8 +99,8 @@ class CodeViewFragment : Fragment() {
             lineView.text = numLines(openSources[current].linesAmount)
         }
         else {
-            codeView.text = NO_OPENED
-            lineView.text = DEFAULT_NUM
+            codeView.text = resources.getString(R.string.empty_viewer)
+            lineView.text = resources.getString(R.string.empty_numeration)
         }
     }
 }

@@ -1,7 +1,6 @@
 package app.com.animation.git;
 
 import android.animation.ObjectAnimator
-import android.os.AsyncTask
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,26 +11,24 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import app.com.animation.MainActivity
 import app.com.animation.R
-import app.com.animation.viewer.CodeViewFragment
-import app.com.animation.viewer.CppParser
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.net.URL
-import java.util.concurrent.CompletableFuture
-import java.util.concurrent.Executors
-import java.util.function.Supplier
-import javax.net.ssl.HttpsURLConnection
 
 class ConnectionFragment: Fragment() {
     lateinit var http: String
-    var done = false
-    lateinit var status: TextView
     lateinit var picture: ImageView
+    lateinit var statusView: MyView
+    var status = 0
     private var objAnimator: ObjectAnimator? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         http = arguments?.getString("url").toString()
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        if (savedInstanceState != null) {
+            status = savedInstanceState.getInt("status")
+        }
     }
 
     override fun onCreateView(
@@ -41,16 +38,19 @@ class ConnectionFragment: Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.connection_layout, container, false)
         view.findViewById<TextView>(R.id.load_target).text = http
-        status = view.findViewById(R.id.load_text)
+        statusView = view.findViewById(R.id.load_text)
         picture = view.findViewById(R.id.load_picture)
-        getStatus()
+        updateStatus()
         return view
     }
 
     override fun onStart() {
         super.onStart()
-        if (!done) {
-            AsyncDownload(this) {(activity as MainActivity).openViewer()}.execute()
+        if (status == 0) {
+            AsyncDownload(this).execute()
+        }
+        else {
+            updateStatus()
         }
     }
 
@@ -60,21 +60,21 @@ class ConnectionFragment: Fragment() {
     }
 
 
-    fun getStatus() {
-        if (done) {
-            status.text = "Done"
-            status.setTextColor(resources.getColor(R.color.local_file))
-            picture.setImageDrawable(resources.getDrawable(R.drawable.ok))
-            configureObjectAnimator("rotationY", AccelerateDecelerateInterpolator())
-        }
-        else {
-            status.text = "Loading"
-            configureObjectAnimator("rotation", LinearInterpolator())
-        }
-        AnimationUtils.loadAnimation(context,
-            R.anim.my_animation
-        ).also { animation ->
-            status.startAnimation(animation)
+    fun updateStatus() {
+        when (status) {
+            1 -> {
+                statusView.text = "Done"
+                picture.setImageDrawable(resources.getDrawable(R.drawable.ok))
+                configureObjectAnimator("rotationY", AccelerateDecelerateInterpolator())
+            }
+            -1 -> {
+                statusView.text = "Fail"
+                configureObjectAnimator("rotation", LinearInterpolator())
+            }
+            0 -> {
+                statusView.text = "Loading..."
+                configureObjectAnimator("rotation", LinearInterpolator())
+            }
         }
     }
 
@@ -86,6 +86,11 @@ class ConnectionFragment: Fragment() {
             interpolator = interpol
             start()
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("status", status)
     }
 
 

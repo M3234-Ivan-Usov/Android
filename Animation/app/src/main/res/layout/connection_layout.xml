@@ -18,7 +18,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.2"
-        android:text="Connecting to "/>
+        android:text="@string/connecting_to"/>
     <TextView
         android:id="@+id/load_target"
         android:layout_width="wrap_content"
@@ -30,18 +30,15 @@
         app:layout_constraintTop_toBottomOf="@id/load_head"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
-    <TextView
+    <app.com.animation.git.MyView
         android:id="@+id/load_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:textColor="@color/dark_background"
-        android:text="Loading..."
+        android:layout_width="200dp"
+        android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/load_target"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.2" />
+        app:layout_constraintHorizontal_bias="0.1" />
     <ImageView
         android:id="@+id/load_picture"
         android:layout_width="wrap_content"
