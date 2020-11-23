@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Retrofit</string>
+    <string name="delete_message">Are you sure to send delete request?</string>
+    <string name="load_message">Loading content</string>
+    <string name="post_body_hint">Type your post body here</string>
+    <string name="post_title_hint">Type your post title here</string>
+    <string name="post_button">Post!</string>
+    <string name="comment_put_button">Leave comment</string>
+    <string name="comment_put_name">Author: </string>
+    <string name="comment_put_email">E-mail: </string>
+    <string name="comment_body_hint">Type your comment here</string>
+    <string name="default_comment_name">Kurt Cobain</string>
+    <string name="default_comment_email">kurt@gmail.com</string>
+    <string name="post_tab">Posts</string>
+    <string name="comment_tab">Comments</string>
+</resources>
