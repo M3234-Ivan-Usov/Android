@@ -12,11 +12,10 @@ import androidx.fragment.app.Fragment
 import app.com.animation.MainActivity
 import app.com.animation.R
 
-class ConnectionFragment: Fragment() {
+class ConnectionFragment : Fragment() {
     lateinit var http: String
     lateinit var picture: ImageView
     lateinit var statusView: MyView
-    var status = 0
     private var objAnimator: ObjectAnimator? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,12 +23,6 @@ class ConnectionFragment: Fragment() {
         http = arguments?.getString("url").toString()
     }
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
-        if (savedInstanceState != null) {
-            status = savedInstanceState.getInt("status")
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,10 +39,9 @@ class ConnectionFragment: Fragment() {
 
     override fun onStart() {
         super.onStart()
-        if (status == 0) {
+        if (MainActivity.downloadStatus == 0) {
             AsyncDownload(this).execute()
-        }
-        else {
+        } else {
             updateStatus()
         }
     }
@@ -61,7 +53,7 @@ class ConnectionFragment: Fragment() {
 
 
     fun updateStatus() {
-        when (status) {
+        when (MainActivity.downloadStatus) {
             1 -> {
                 statusView.text = "Done"
                 picture.setImageDrawable(resources.getDrawable(R.drawable.ok))
@@ -78,7 +70,7 @@ class ConnectionFragment: Fragment() {
         }
     }
 
-    private fun configureObjectAnimator(property : String, interpol : Interpolator) {
+    private fun configureObjectAnimator(property: String, interpol: Interpolator) {
         objAnimator?.end()
         objAnimator = ObjectAnimator.ofFloat(picture, property, 0.0f, 360.0f).apply {
             duration = ANIMATION_DURATION
@@ -87,12 +79,6 @@ class ConnectionFragment: Fragment() {
             start()
         }
     }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putInt("status", status)
-    }
-
 
     companion object {
         const val CANCELLED = "Download was cancelled"

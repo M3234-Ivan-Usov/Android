@@ -10,10 +10,10 @@ import java.io.InputStreamReader
 import java.net.URL
 import javax.net.ssl.HttpsURLConnection
 
-class AsyncDownload(private val fragment : ConnectionFragment) : AsyncTask<Int, Int, Boolean>() {
+class AsyncDownload(private val fragment: ConnectionFragment) : AsyncTask<Int, Int, Boolean>() {
     private var content = ConnectionFragment.EXCEPTED
 
-    private fun correctHttp(http : String) : URL {
+    private fun correctHttp(http: String): URL {
         val split = http.split("/")
         val rawHttp = StringBuilder()
         rawHttp.append(PREFIX)
@@ -27,7 +27,7 @@ class AsyncDownload(private val fragment : ConnectionFragment) : AsyncTask<Int, 
     }
 
     override fun doInBackground(vararg params: Int?): Boolean {
-        var reader : BufferedReader? = null
+        var reader: BufferedReader? = null
         var success = false
         try {
             val url = correctHttp(fragment.http)
@@ -39,7 +39,7 @@ class AsyncDownload(private val fragment : ConnectionFragment) : AsyncTask<Int, 
             content = reader.readText()
             success = true
 
-        } catch (e : Throwable) {
+        } catch (e: Throwable) {
         } finally {
             reader?.close()
         }
@@ -49,18 +49,19 @@ class AsyncDownload(private val fragment : ConnectionFragment) : AsyncTask<Int, 
     override fun onPostExecute(result: Boolean?) {
         super.onPostExecute(result)
         if (content == ConnectionFragment.CANCELLED || content == ConnectionFragment.EXCEPTED) {
-            fragment.status = -1
+            MainActivity.downloadStatus = -1
             fragment.updateStatus()
-        }
-        else {
-            val parser = CppParser(content, fragment.resources,
-                fragment.http.substringAfterLast('/'), true)
+        } else {
+            val parser = CppParser(
+                content, fragment.resources,
+                fragment.http.substringAfterLast('/'), true
+            )
             parser.parse()
-            with (CodeViewFragment) {
+            with(CodeViewFragment) {
                 openSources.add(parser)
                 current = openSources.size - 1
             }
-            fragment.status = 1
+            MainActivity.downloadStatus = 1
             fragment.updateStatus()
             (fragment.activity as MainActivity).openViewer()
         }

@@ -4,6 +4,7 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
+import android.os.PersistableBundle
 import android.widget.Button
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -17,14 +18,16 @@ class MainActivity : AppCompatActivity() {
     companion object {
         private const val REQUEST = 0
         private const val APP_DIR = "CodeView"
+        var downloadStatus = 0
     }
+
     var bottomNavigationView: BottomNavigationView? = null
 
     var currentNavController: LiveData<NavController>? = null
 
     private var hasPermission = false
 
-    lateinit var folder : File
+    lateinit var folder: File
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,8 +40,12 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         } else {
-            folder = File(Environment.getExternalStorageDirectory().absolutePath,
-                APP_DIR).apply { if (!exists()) {mkdir()} }
+            folder = File(
+                Environment.getExternalStorageDirectory().absolutePath,
+                APP_DIR
+            ).apply {
+                if (!exists()) mkdir()
+            }
             setContentView(R.layout.activity_main)
             if (savedInstanceState == null) {
                 setupBottomNavigationBar()
@@ -64,7 +71,7 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    fun changeBottom(colour : Int) {
+    fun changeBottom(colour: Int) {
         bottomNavigationView?.setBackgroundColor(resources.getColor(colour))
     }
 
@@ -89,14 +96,20 @@ class MainActivity : AppCompatActivity() {
     private fun askForPermission() {
         val permissions = arrayOf(
             ContextCompat.checkSelfPermission(this, android.Manifest.permission.INTERNET),
-            ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE),
+            ContextCompat.checkSelfPermission(
+                this,
+                android.Manifest.permission.READ_EXTERNAL_STORAGE
+            ),
             ContextCompat.checkSelfPermission(this, android.Manifest.permission.INTERNET)
         )
         if (permissions.contains(PackageManager.PERMISSION_DENIED)) {
-            ActivityCompat.requestPermissions(this, arrayOf(
-                android.Manifest.permission.INTERNET,
-                android.Manifest.permission.READ_EXTERNAL_STORAGE,
-                android.Manifest.permission.WRITE_EXTERNAL_STORAGE), REQUEST)
+            ActivityCompat.requestPermissions(
+                this, arrayOf(
+                    android.Manifest.permission.INTERNET,
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ), REQUEST
+            )
         } else {
             hasPermission = true
         }
@@ -111,7 +124,8 @@ class MainActivity : AppCompatActivity() {
         when (requestCode) {
             REQUEST -> {
                 if (grantResults.size == 3 &&
-                    grantResults.all { res -> res == PackageManager.PERMISSION_GRANTED } ) {
+                    grantResults.all { res -> res == PackageManager.PERMISSION_GRANTED }
+                ) {
                     hasPermission = true
                     recreate()
                 }

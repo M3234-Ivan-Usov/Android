@@ -14,21 +14,22 @@ import app.com.animation.MainActivity
 import app.com.animation.R
 
 class UrlFragment : Fragment() {
-    private lateinit var link : EditText
+    private lateinit var link: EditText
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.url_layout, container, false)
-        (activity as MainActivity).changeBottom(R.color.white_background)
+        MainActivity.downloadStatus = 0
         view.findViewById<Button>(R.id.search_url).run {
             setOnClickListener {
                 val url = link.text.toString()
                 if (url.isNotEmpty()) {
                     findNavController().navigate(
                         R.id.action_url_to_connection,
-                        bundleOf("url" to url))
+                        bundleOf("url" to url)
+                    )
                 }
             }
         }
