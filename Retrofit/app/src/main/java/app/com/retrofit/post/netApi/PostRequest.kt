@@ -1,5 +1,6 @@
-package app.com.retrofit.post
+package app.com.retrofit.post.netApi
 
+import app.com.retrofit.post.ui.Post
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*

@@ -2,8 +2,8 @@ package app.com.retrofit
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import app.com.retrofit.comment.CommentList
-import app.com.retrofit.post.PostList
+import app.com.retrofit.comment.ui.CommentList
+import app.com.retrofit.post.ui.PostList
 import java.lang.RuntimeException
 
 class TabPagerAdapter : FragmentStateAdapter(MainActivity.instance) {

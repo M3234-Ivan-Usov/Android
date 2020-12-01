@@ -1,4 +1,4 @@
-package app.com.retrofit.comment
+package app.com.retrofit.comment.ui
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

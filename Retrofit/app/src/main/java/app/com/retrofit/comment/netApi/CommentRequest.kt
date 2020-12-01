@@ -1,5 +1,6 @@
-package app.com.retrofit.comment
+package app.com.retrofit.comment.netApi
 
+import app.com.retrofit.comment.ui.Comment
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*

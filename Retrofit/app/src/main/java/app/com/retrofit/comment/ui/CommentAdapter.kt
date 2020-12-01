@@ -1,4 +1,4 @@
-package app.com.retrofit.comment
+package app.com.retrofit.comment.ui
 
 import android.view.LayoutInflater
 import android.view.View
